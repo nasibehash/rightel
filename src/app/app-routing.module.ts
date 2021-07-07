@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CustomPreloadingStrategyService} from '../services/custom-preloading-strategy.service';
+import {CustomPreloadingStrategyService} from '../core/services/custom-preloading-strategy.service';
 const routes: Routes = [
   {
     path: '',

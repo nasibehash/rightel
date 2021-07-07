@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {OrderModel} from '../../models/orders.model';
+import {OrderModel} from '../../../../core/models/orders.model';
 import swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({

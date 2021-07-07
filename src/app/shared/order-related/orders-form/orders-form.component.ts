@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import {OrderModel} from '../../models/orders.model';
 
 
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 const BREADCRUMBS: any[] = [
   {
     title: 'داشبورد',
-    link: 'dashboards/default'
+    link: ''
   }
 ];
 @Component({
