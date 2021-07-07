@@ -1,0 +1,43 @@
+<!-- <div  *ngFor="let item of rows">
+    <div *ngFor="let pItem of item.pOrderItem">
+        
+{{pItem.itemName}}
+    </div>
+</div> -->
+
+<!-- <table  >
+   <div>
+    <tr>
+        <th>id</th>
+        <th>Lastname</th>
+        <th>Age</th>
+    </tr>
+   </div>
+    <div *ngFor="let item of rows;let i = index">
+      
+        <tr *ngFor="let pItem of item.pOrderItem;">
+            <td>{{pItem.id}}</td>
+       
+            <td >{{pItem.itemName}}</td>
+            <td>{{pItem.number}}</td>
+        </tr>
+       
+    </div>
+   
+</table>
+ -->
+
+<ngx-datatable #mydatatable   [sortType]="'multi'"  [headerHeight]="50" [footerHeight]="40" [rowHeight]="'auto'" [rows]="rows" [columnMode]="'force'" [limit]="5" >
+    
+
+         
+        <ngx-datatable-column name="name"  >
+		<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row"  >
+         	<p>{{row.pOrderItem[orderItemIndex-1].itemName}}</p>
+
+		</ng-template>
+	</ngx-datatable-column>
+
+	
+
+</ngx-datatable>

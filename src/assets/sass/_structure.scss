@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'myFontie';
+    src: url('/assets/fonts/IRANSansWeb(FaNum).ttf');
+    // src: url('/assets/fonts/IRANYekanRegular(FaNum).ttf');
+    /* font-weight: 100; */
+    /* font-style: normal; */
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'myFontie', 'Josefin Sans', sans-serif !important;
+}
+
+button,
+a {
+    cursor: pointer !important;
+}
+
+app {
+    display: block;
+    height: 100%;
+}
+
+.site-container {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    >* {
+        display: block;
+    }
+    >router-outlet {
+        display: none;
+    }
+    .main-content {
+        height: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        .main-content-wrap {
+            display: table;
+            height: 100%;
+            padding: 22px;
+            table-layout: fixed;
+            width: 100%;
+        }
+    }
+}
