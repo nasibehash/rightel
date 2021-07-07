@@ -7,130 +7,70 @@
         </div>
      
     </div>
-    <!-- <mat-form-field class="mt-4" *ngIf="!isVisible">
+    <mat-form-field class="mt-4" *ngIf="!isVisible">
 
         <mat-label>جستجو</mat-label>
         <mat-icon matRipple matPrefix class="">search</mat-icon>
         <input matInput (keyup)="updateFilter($event)" #input />
 
-    </mat-form-field> -->
-    <!-- <app-form-feedback [visibleBtn]="isVisible" (OnclickCancel)="closeMe($event)" (OnclickInsert)="InsertFeedback($event)" [mySuggestionData]="mySuggestionData" [rows]="rows" *ngIf="isVisible"></app-form-feedback> -->
-    <div class="row mt-3 text-center" *ngIf="isLoadingMyInfo else dataBlock">
-        <div class=" col-12 mb-5 text-center">
-            <i class="pt-3  ">در حال دریافت اطلاعات لطفا صبور باشید...</i>
+    </mat-form-field>
+    <app-form-orders [visibleBtn]="isVisible" (OnclickCancel)="closeMe($event)" (OnclickInsert)="InsertOrders($event)" [myOrdersData]="myOrdersData" [rows]="rows" *ngIf="isVisible"></app-form-orders>
+      
+ 
+    <div class="mt-5" *ngIf="!doRefresh">
 
-        </div>
-        <div class="col-12 c-blue text-center">
+        <ngx-datatable mat-table #myTable class="bootstrap  expandable" [scrollbarH]="scrollBarHorizontal" [messages]="messages" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [rows]="rows">
+            <ngx-datatable-column prop="" name="#" [width]="100" [sortable]="true" [canAutoResize]="true">
+                <ng-template let-row="row" let-rowIndex="rowIndex"  ngx-datatable-cell-template>
+                    <h6 [innerHTML]="rowIndex" class="c-black f-16 "></h6>
 
-            <div class="loader loader-4">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+                </ng-template>
+            </ngx-datatable-column>
+           
+            <ngx-datatable-column prop="title" name="عنوان" [width]="300" [sortable]="true" [canAutoResize]="true">
+                <ng-template let-row="row" let-value="title" ngx-datatable-cell-template>
+                    <h6 [innerHTML]="row.title" class="c-black f-16 "></h6>
+
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column prop="subject" name="موضوع" [width]="200" [sortable]="true" [canAutoResize]="true">
+                <ng-template let-row="row" let-value="subject" ngx-datatable-cell-template>
+                
+                    <h6 [innerHTML]="row.subject" class="c-black f-16 "></h6>
+
+                </ng-template>
+
+            </ngx-datatable-column>
+            <ngx-datatable-column prop="trackingCode" name="کد پیگیری" [width]="300" [sortable]="true" [canAutoResize]="true">
+                <ng-template let-row="row" let-value="trackingCode" ngx-datatable-cell-template>
+                    <h6 [innerHTML]="row.trackingCode" class="c-black f-16 "></h6>
+
+                </ng-template>
+            </ngx-datatable-column>
+          
+            <ngx-datatable-column name="" [resizeable]="false" [sortable]="true" [canAutoResize]="true" class="text-left">
+                <ng-template let-row="row" let-rowIndex="rowIndex" let-value="action" ngx-datatable-cell-template>
+                    <button class="" mat-icon-button >
+                    <mat-icon class="text-muted"  matTooltip="ویرایش" matTooltipPosition="above" matRipple matPrefix>edit_outline</mat-icon>
+                  </button>
+                    <button class="" mat-icon-button >
+                    <mat-icon (click)="onRemoveRow(rowIndex)" class=" text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>delete_outline</mat-icon>
+
+                  </button>
+                 
+
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-footer>
+                <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize" let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-isVisible="isVisible">
+                    <div class="page-count dir-rtl">
+                        <span *ngIf="false">
+                         </span> {{rowCount.toLocaleString()}} رکورد
+                    </div>
+                    <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'" [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'" [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount" [hidden]="!((rowCount / pageSize) > 1)"
+                        (change)="table.onFooterPage($event)">
+                    </datatable-pager>
+                </ng-template>
+            </ngx-datatable-footer>
+        </ngx-datatable>
     </div>
-    <ng-template #dataBlock>
-        <div class="mt-5" *ngIf="!doRefresh">
-
-            <ngx-datatable mat-table #myTable class="bootstrap  expandable" [scrollbarH]="scrollBarHorizontal" [messages]="messages" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [rows]="rows">
-                <ngx-datatable-row-detail [rowHeight]="'auto'" #myDetailRow (toggle)="onDetailToggle($event)">
-                    <ng-template let-row="row" let-value="comment" let-expanded="expanded" ngx-datatable-row-detail-template>
-                        <div class="row mt-3 text-center" *ngIf="isLoadingMyInfo else detailsBlock">
-                            <div class=" col-12 mb-5 text-center">
-                                <i class="pt-3  ">در حال دریافت اطلاعات لطفا صبور باشید...</i>
-
-                            </div>
-                            <div class="col-12 c-blue text-center">
-
-                                <div class="loader loader-4">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <ng-template #detailsBlock>
-                            <div *ngFor="let subitem of row.detail" class="detail">
-                                <div class="mb-2"> <span class="pr-2 f-16"><i class="fa fa-chevron-left align-middle c-brown f-14"></i> {{subitem.title}}: </span>
-                                    <p [innerHTML]="subitem.description" class=" pt-3 d-inline-block font-italic f-15"> </p>
-                                </div>
-                            </div>
-                            <a ni-button [view]="'accent'" target="_blank" [block]="false" href="{{item}}" *ngFor="let item of pdfsss" class="mt-4 mb-4 ml-4"><i class="fa fa-file-pdf-o pt-2"></i></a>
-
-
-                        </ng-template>
-                    </ng-template>
-                </ngx-datatable-row-detail>
-
-                <ngx-datatable-column prop="" name="#" [width]="100" [sortable]="true" [canAutoResize]="true">
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <!-- <mat-icon class="image-icon text-muted mt-4 mb-4">event_available</mat-icon> -->
-                        {{rowIndex + 1}}
-                    </ng-template>
-                </ngx-datatable-column>
-               
-                <ngx-datatable-column prop="title" name="عنوان" [width]="300" [sortable]="true" [canAutoResize]="true">
-                    <ng-template let-row="row" let-value="title" ngx-datatable-cell-template>
-                        <h6 [innerHTML]="row.title" class="c-black f-16 "></h6>
-
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column prop="subject" name="موضوع" [width]="200" [sortable]="true" [canAutoResize]="true">
-                    <ng-template let-row="row" let-value="subject" ngx-datatable-cell-template>
-                        <!-- <span *ngIf="row.subject === 'خرید'" class="item-badge">{{ row.subject }}</span>
-                        <span *ngIf="row.subject === 'فروش'" class="item-badge2">{{ row.subject }}</span>
-                        <span *ngIf="row.subject === 'بازاریابی'" class="item-badge3">{{ row.subject }}</span> -->
-
-                        <h6 [innerHTML]="row.subject" class="c-black f-16 "></h6>
-
-                    </ng-template>
-
-                </ngx-datatable-column>
-                <ngx-datatable-column prop="trackingCode" name="کد پیگیری" [width]="300" [sortable]="true" [canAutoResize]="true">
-                    <ng-template let-row="row" let-value="trackingCode" ngx-datatable-cell-template>
-                        <h6 [innerHTML]="row.trackingCode" class="c-black f-16 "></h6>
-
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="وضعیت" prop="status" [width]="200" [sortable]="true" [canAutoResize]="true">
-                    <ng-template let-row="row" let-value="status" ngx-datatable-cell-template>
-                        <h6 class=" c-black f-16  {{{type:'colors',value:row.status} | statusPipe}} ">
-                            <i class=" c-black f-16 {{{type:'icons',value:row.status}  | statusPipe}}"></i>
-                            <!-- {{(row.status===0?'ثبت شد':row.status===1? 'در حال پردازش':row.status===2?'خطا':row.status===3? 'ناشناخته':'ناشناخته')}} -->
-                            {{{type:'status',value:row.status} | statusPipe}}
-
-                        </h6>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="" [resizeable]="false" [sortable]="true" [canAutoResize]="true" class="text-left">
-                    <ng-template let-row="row" let-value="action" ngx-datatable-cell-template>
-                        <!-- <button class="" mat-icon-button disabled>
-                        <mat-icon class="mt-4 mb-4 text-muted" disabled matTooltip="ویرایش" matTooltipPosition="above" matRipple matPrefix>edit_outline</mat-icon>
-                      </button>
-                        <button class="" mat-icon-button disabled>
-                        <mat-icon class="mt-4 mb-4 text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>delete_outline</mat-icon>
-
-                      </button> -->
-                     
-
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-footer>
-                    <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize" let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-isVisible="isVisible">
-                        <div class="page-count dir-rtl">
-                            <span *ngIf="false">
-                                                        <!-- {{selectedCount.toLocaleString()}} رکورد /  -->
-                                                      </span> {{rowCount.toLocaleString()}} رکورد
-                        </div>
-                        <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'" [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'" [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount" [hidden]="!((rowCount / pageSize) > 1)"
-                            (change)="table.onFooterPage($event)">
-                        </datatable-pager>
-                    </ng-template>
-                </ngx-datatable-footer>
-            </ngx-datatable>
-        </div>
-    </ng-template>

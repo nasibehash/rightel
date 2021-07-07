@@ -1,0 +1,39 @@
+<div class="col-lg-12 col-sm-12 col-md-12 p-r-0 insert-info mb-3  animate__animated animate__fadeInDown">
+
+    <div class="card">
+        <div class="header-title text-left mb-3">
+            <h5 class="text-muted submit-btn" ><i class="fa fa-chevron-left faa-flash animated align-middle c-brown "></i><i class="fa fa-chevron-left faa-flash animated align-middle c-brown ml-1"></i>ثبت نظرات و پیشنهادات</h5>
+            <h6 class=" float-right text-danger f-14 d-none"> <i class="fa fa-exclamation-circle faa-flash animated mr-1"></i>{{errorMessage}}</h6>
+        </div>
+        <div class="card-content">
+
+            <form class="mt-1" id="info-form" [formGroup]="submitForm" #insertOrders="ngForm" (ngSubmit)="onClickSubmit(insertOrders.value)">
+                <input id="title" type="text" class="form-control  mb-2" placeholder="عنوان" formControlName="title" required>
+                <small class="form-text text-muted danger mb-2" *ngIf="!submitForm.get('title').valid && (submitForm.get('title').dirty || submitForm.get('title').touched)"><i class="ft-alert-circle fa faa-flash animated"></i> عنوان را وارد کنید</small>
+                <textarea id="comment" rows="10" maxlength="500" class="form-control mb-2" name="comment" formControlName="comment" placeholder="نظر خود را وارد کنید" required></textarea>
+                <small class="form-text text-muted danger mb-2" *ngIf="!submitForm.get('comment').valid && (submitForm.get('comment').dirty || submitForm.get('comment').touched)"><i class="ft-alert-circle fa faa-flash animated"></i> نظر خود را وارد کنید</small>
+
+
+                <!-- <input id="subject" type="text" class="form-control  mb-2" placeholder="عنوان" formControlName="subject" required> -->
+                <select (change)="selectChangeHandler($event)" formControlName="subject" class="float-right">
+                    <option value="" >موضوع</option>
+                    <option value="خرید" >خرید</option>
+                    <option value="فروش">فروش</option>
+                    <option value="مارکتینک">مارکتینگ</option>
+
+                </select>
+                <small class="form-text text-muted danger mt-2 float-right" *ngIf="!submitForm.get('subject').valid && (submitForm.get('subject').dirty || submitForm.get('subject').touched)"><i class="ft-alert-circle fa faa-flash animated"></i>موضوع را انتخاب کنید</small>
+
+
+
+                <button  type="submit" [disabled]="!submitForm.valid" class="text-light">
+                  ثبت
+                  </button>
+                <button (click)="cancelBtn();"   class="text-light  mr-4" >
+                 انصراف
+                  </button>
+            </form>
+
+        </div>
+    </div>
+</div>

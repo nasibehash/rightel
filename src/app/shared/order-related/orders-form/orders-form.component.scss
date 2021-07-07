@@ -1,0 +1,39 @@
+.insert-info {
+    text-align: center;
+    margin: 1.5rem auto;
+    opacity: 1;
+    transition: all .7s ease-in-out;
+    .card {
+        background: #8080801c;
+        padding: 2rem;
+    }
+    form {
+        input,
+        textarea,
+        select {
+            font-family: 'myFontie' !important;
+        }
+    }
+}
+
+.header-title {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    padding-bottom: 0;
+    border-bottom: none;
+    // background-color: white;
+    h6 {
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .submit-btn{
+        display: inline !important;
+    }
+}
+
+select {
+    border-color: #808080ad !important;
+    border-radius: 3px;
+    color: #808080f2 !important;
+}

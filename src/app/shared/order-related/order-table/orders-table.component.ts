@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {PorderModel} from '../../models/pOrders.model';
+import {OrderModel} from '../../models/orders.model';
+import swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-orders-table',
@@ -11,7 +12,7 @@ import {PorderModel} from '../../models/pOrders.model';
 export class OrdersTableComponent implements OnInit {
 
 
-  myData : Array<PorderModel> = [];
+  myOrdersData : Array<OrderModel> = [];
   rows = [];
   isLoadingMyInfo :boolean = true;
   doRefresh :boolean = false;
@@ -40,12 +41,11 @@ export class OrdersTableComponent implements OnInit {
   }
 
     getData() {
-      this.http.get('assets/data/pOrder.json')
+      this.http.get('assets/data/order.json')
       .subscribe((myList: any[]) => {
 
-          this.myData =  myList.sort(function(a, b){return b.id-a.id});
-          this.rows =this.myData;
-        this.rows =this.myData;
+          this.myOrdersData =  myList;
+          this.rows =this.myOrdersData;
         this.isLoadingMyInfo = false;
 
       })
@@ -64,8 +64,9 @@ updateFilter(event) {
   const val = event.target.value.toLowerCase();
 
   // filter our data
-  const temp = this.myData.filter(function (d) {
-      // return d.title.toLowerCase().indexOf(val) !== -1 || !val;
+  const temp = this.myOrdersData.filter(function (d) {
+    return d.title.toLowerCase().indexOf(val) !== -1 || d.subject.toLowerCase().indexOf(val) !== -1 || !val;
+ 
   });
 
   // update the rows
@@ -96,36 +97,41 @@ this.isVisible = !this.isVisible;
 
 
 
- InsertFeedback(data){
+ InsertOrders(data){
 
 
   this.isVisible = false;
-  const id =this.myData.length;
-  const status =Math.floor((Math.random() * 10) + 1);
+  const id =this.myOrdersData.length;
   const trackingCode =Math.floor((Math.random() *1000) + 1)
-  this.myData.push({
+  this.myOrdersData.push({
     id:id + 1,
     title: data.title,
     comment: data.comment,
     subject: data.subject,
-    trackingCode:trackingCode,
-    status: status
+    trackingCode:trackingCode
   });
 
     this.doRefresh = true;
     setTimeout(() => {
-      // this.rows =this.myData.sort(function(a, b){return b.id-a.id});
+      // this.rows =this.myOrdersData.sort(function(a, b){return b.id-a.id});
       this.doRefresh = false;
     }, 50);
 
-  //   swal.fire(
-  //     {
-  //         title: 'نظرات شما با موفقیت در سیستم ثبت شد',
-  //         showConfirmButton: false,
-  //         icon: 'success',
-  //         timer: 4000
-  //     }
-  // )
+    swal.fire(
+      {
+          title: 'نظرات شما با موفقیت در سیستم ثبت شد',
+          showConfirmButton: false,
+          icon: 'success',
+          timer: 4000
+      }
+  )
 }
 
+onRemoveRow(rowIndex: number) {
+  this.doRefresh = true;
+
+  this.myOrdersData.splice(rowIndex, 1);
+  this.doRefresh = false;
+
+}
 }
