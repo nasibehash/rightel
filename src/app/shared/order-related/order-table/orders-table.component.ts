@@ -75,13 +75,7 @@ updateFilter(event) {
   this.table.offset = 0;
 }
 
-toggleExpandRow(row) {
-this.table.rowDetail.toggleExpandRow(row);
-}
 
-onDetailToggle(event) {
-// console.log('Detail Toggled', event);
-}
 toggleForm(){
 this.isVisible = !this.isVisible;
 // this.showForm = !this.showForm;
@@ -127,11 +121,9 @@ this.isVisible = !this.isVisible;
   )
 }
 
-onRemoveRow(rowIndex: number) {
-  this.doRefresh = true;
+// onRemoveRow(rowIndex: number) {
 
-  this.myOrdersData.splice(rowIndex, 1);
-  this.doRefresh = false;
+//   this.myOrdersData.splice(rowIndex, 1);
 
-}
+// }
 }
