@@ -3,6 +3,7 @@
     margin: 1.5rem auto;
     opacity: 1;
     transition: all .7s ease-in-out;
+
     .card {
         background: #8080801c;
         padding: 2rem;
@@ -10,8 +11,9 @@
     form {
         input,
         textarea,
-        select {
-            font-family: 'myFontie' !important;
+        select,button,h6 {
+    font-family: 'myFont' !important;
+
         }
     }
 }

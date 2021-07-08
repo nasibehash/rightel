@@ -1,7 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
-a{
-    cursor:  pointer !important;
+
+@font-face {
+    font-family: 'myFont';
+    src: url('./assets/fonts/IRANSansWeb(FaNum).ttf');
+  
+}
+*{
+    font-family: myFont;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0;  }
+a{
+    cursor:  pointer !important;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+button{
+    border: none !important ;
+    border-radius: 3px !important;
+    padding: 5px !important;
+}
+ul{
+    list-style: none !important;
+}
+.f-13{
+    font-size: 13px !important;
+}
+.f-15{
+    font-size: 15px !important;
+}
+.f-18{
+    font-size: 18px !important;
+}
+.align-middle{
+    vertical-align: middle !important;
+}
+.c-black {
+    color: #000 !important;
+}
+.c-white{
+    color: #fff !important;
+}
+.b-green{
+background-color: #167a12;
+}
+.b-red{
+    background-color: #e01425;
+    }
+.mb-0{
+margin-bottom: 0 !important;
+}
+.mt-0{
+margin-top: 0 !important;
+}
+.ml-0{
+    margin-left: 0 !important;
+}
+.pr-0{
+    padding-right: 0 !important;
+}
+
+.dir-rtl{
+    direction: rtl !important;
+}

@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'myFontie';
+    font-family: 'myFont';
     src: url('/assets/fonts/IRANSansWeb(FaNum).ttf');
     // src: url('/assets/fonts/IRANYekanRegular(FaNum).ttf');
     /* font-weight: 100; */
@@ -13,7 +13,7 @@ html {
 body {
     height: 100%;
     overflow-x: hidden;
-    font-family: 'myFontie', 'Josefin Sans', sans-serif !important;
+    font-family: 'myFont', 'Josefin Sans', sans-serif !important;
 }
 
 button,

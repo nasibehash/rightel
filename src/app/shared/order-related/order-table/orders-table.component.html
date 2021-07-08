@@ -18,42 +18,43 @@
     <div class="mt-5" *ngIf="!doRefresh">
 
         <ngx-datatable mat-table #myTable class="bootstrap  expandable" [scrollbarH]="scrollBarHorizontal" [messages]="messages" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [rows]="rows">
-            <ngx-datatable-column prop="" name="#" [width]="100" [sortable]="true" [canAutoResize]="true">
+            <ngx-datatable-column prop="" name="#" [width]="100" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-rowIndex="rowIndex"  ngx-datatable-cell-template>
-                    <h6 [innerHTML]="rowIndex" class="c-black f-16 "></h6>
-
+                    <!-- <h6 [innerHTML]="rowIndex" class="c-black f-16 "></h6> -->
+                    <button class="" mat-icon-button >
+                        <mat-icon class=" text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>list</mat-icon>
+                      </button>
                 </ng-template>
             </ngx-datatable-column>
            
-            <ngx-datatable-column prop="title" name="عنوان" [width]="300" [sortable]="true" [canAutoResize]="true">
+            <ngx-datatable-column prop="title" name="عنوان" [width]="300" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-value="title" ngx-datatable-cell-template>
-                    <h6 [innerHTML]="row.title" class="c-black f-16 "></h6>
+                    <h6 [innerHTML]="row.title" class="c-black f-15 mb-0"></h6>
 
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column prop="subject" name="موضوع" [width]="200" [sortable]="true" [canAutoResize]="true">
+            <ngx-datatable-column prop="subject" name="موضوع" [width]="200" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-value="subject" ngx-datatable-cell-template>
                 
-                    <h6 [innerHTML]="row.subject" class="c-black f-16 "></h6>
+                    <h6 [innerHTML]="row.subject" class="c-black f-15 mb-0"></h6>
 
                 </ng-template>
 
             </ngx-datatable-column>
-            <ngx-datatable-column prop="trackingCode" name="کد پیگیری" [width]="300" [sortable]="true" [canAutoResize]="true">
+            <ngx-datatable-column prop="trackingCode" name="کد پیگیری" [width]="300" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-value="trackingCode" ngx-datatable-cell-template>
-                    <h6 [innerHTML]="row.trackingCode" class="c-black f-16 "></h6>
+                    <h6 [innerHTML]="row.trackingCode" class="c-black f-15 mb-0"></h6>
 
                 </ng-template>
             </ngx-datatable-column>
           
-            <ngx-datatable-column name="" [resizeable]="false" [sortable]="true" [canAutoResize]="true" class="text-left">
+            <ngx-datatable-column name="" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true" class="text-left">
                 <ng-template let-row="row" let-rowIndex="rowIndex" let-value="action" ngx-datatable-cell-template>
                     <button class="" mat-icon-button >
                     <mat-icon class="text-muted"  matTooltip="ویرایش" matTooltipPosition="above" matRipple matPrefix>edit_outline</mat-icon>
                   </button>
                     <button class="" mat-icon-button >
                     <mat-icon (click)="onRemoveRow(rowIndex)" class=" text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>delete_outline</mat-icon>
-
                   </button>
                  
 

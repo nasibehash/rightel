@@ -5,7 +5,7 @@ const BREADCRUMBS: any[] = [
     link: 'dashboards/default'
   },
   {
-    title: 'صفحه سفارشات',
+    title: 'سفارشات',
     link: '/orders'
   }
 ];

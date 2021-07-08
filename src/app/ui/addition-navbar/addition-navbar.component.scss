@@ -8,7 +8,7 @@
     top: 0;
     transform: translate(300px, 0);
     transition: .2s transform 0s ease-in-out, 0s z-index .2s ease-in-out;
-    width: 300px;
+    width: 311px;
     z-index: 9997;
    
     .rtl & {
@@ -77,8 +77,8 @@
 
 @media only screen and (max-width: 543px) {
     :host {
-            transform: translate(270px, 0);
-            width: 270px;
+            // transform: translate(270px, 0);
+            // width:311px;
             .rtl & {
                 transform: translate(-270px, 0);
         }

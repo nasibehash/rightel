@@ -2,32 +2,31 @@
 
     <div class="card">
         <div class="header-title float-right mb-3">
-            <h5 class="text-muted submit-btn" ><i class="fa fa-chevron-left faa-flash animated align-middle c-brown "></i><i class="fa fa-chevron-left faa-flash animated align-middle c-brown ml-1"></i>ثبت  سفارش جدید</h5>
+            <h5 class="text-muted submit-btn" ><i class="fa fa-chevron-left faa-flash animated align-middle c-brown "></i><i class="fa fa-chevron-left faa-flash animated align-middle c-brown ml-1"></i><span class="f-18">ثبت  سفارش جدید</span></h5>
         </div>
         <div class="card-content">
 
             <form class="mt-1" id="info-form" [formGroup]="submitForm" #insertOrders="ngForm" (ngSubmit)="onClickSubmit(insertOrders.value)">
-                <input id="title" type="text" class="form-control  mb-2" placeholder="عنوان" formControlName="title"
+                <input id="title" type="text" class="form-control f-15 mb-2" placeholder="عنوان" formControlName="title"
                   name="title"  [(ngModel)]="myOrdersData.title" required>
-                <small class="form-text text-muted danger mb-2" *ngIf="!submitForm.get('title').valid && (submitForm.get('title').dirty || submitForm.get('title').touched)"><i class="ft-alert-circle fa faa-flash animated"></i> عنوان را وارد کنید</small>
-                <input id="trackingCode" type="text" class="form-control  mb-2" placeholder="کد رهگیری" formControlName="trackingCode" required>
-                <small class="form-text text-muted danger mb-2" *ngIf="!submitForm.get('trackingCode').valid && (submitForm.get('trackingCode').dirty || submitForm.get('trackingCode').touched)"><i class="ft-alert-circle fa faa-flash animated"></i>  کد رهگیری را وارد کنید</small>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('title').valid && (submitForm.get('title').dirty || submitForm.get('title').touched)"> عنوان را وارد کنید</small>
+                <input id="trackingCode" type="text" class="form-control f-15 mb-2" placeholder="کد رهگیری" formControlName="trackingCode" required>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('trackingCode').valid && (submitForm.get('trackingCode').dirty || submitForm.get('trackingCode').touched)">  کد رهگیری را وارد کنید</small>
 
-                <select (change)="selectChangeHandler($event)" formControlName="subject" class="float-right">
+                <select (change)="selectChangeHandler($event)" formControlName="subject" class="float-right f-15">
                     <option value="" >موضوع</option>
-                    <option value="خرید" >خرید</option>
-                    <option value="فروش">فروش</option>
-                    <option value="مارکتینک">مارکتینگ</option>
+                    <option value="موضوع یک" >موضوع یک</option>
+                    <option value="موضوع دو">موضوع دو</option>
 
                 </select>
-                <small class="form-text text-muted danger mt-2 float-right" *ngIf="!submitForm.get('subject').valid && (submitForm.get('subject').dirty || submitForm.get('subject').touched)"><i class="ft-alert-circle fa faa-flash animated"></i>موضوع را انتخاب کنید</small>
+                <small class="form-text text-danger float-right  mt-2 " *ngIf="!submitForm.get('subject').valid && (submitForm.get('subject').dirty || submitForm.get('subject').touched)">موضوع را انتخاب کنید</small>
 
 
 
-                <button  type="submit" [disabled]="!submitForm.valid" class="text-light">
+                <button  type="submit" [disabled]="!submitForm.valid" class="text-light c-white b-green">
                   ثبت
                   </button>
-                <button (click)="cancelBtn();"   class="text-light  mr-4" >
+                <button (click)="cancelBtn();"   class="text-light  mr-4 c-white b-red" >
                  انصراف
                   </button>
             </form>

@@ -6,10 +6,12 @@
         flex-wrap: wrap;
         font-size: 1.2rem;
         list-style-type: none;
+        font-weight: bold;
         margin: 0;
         padding: 0;
        
         li {
+           
             a,
             .static {
                 .icon {
@@ -23,7 +25,8 @@
             }
             .separator {
                 color: rgba(#000, .4);
-                margin: 0 1rem;
+                font-size: 30px;
+                margin: 0 0.3rem;
             }
         }
         &.custom-1 {

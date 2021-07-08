@@ -1,8 +1,7 @@
 :host ::ng-deep {
-   
         .user-add {
             button {
-                font-family: 'myFontie';
+                font-family: 'myFont';
                 font-weight: 600;
                 margin-right: 0.8rem;
                 .add-button {
@@ -13,10 +12,11 @@
             }
         }
         #search-form input {
-            font-family: 'myFontie';
+            font-family: 'myFont';
             font-weight: 400;
         }
-      
+       
+        
         .search-wrapper {
             position: relative;
         }

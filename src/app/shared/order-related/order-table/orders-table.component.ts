@@ -124,6 +124,6 @@ this.isVisible = !this.isVisible;
 onRemoveRow(rowIndex: number) {
 
   this.myOrdersData.splice(rowIndex, 1);
-  this.rows = [...this.myOrdersData];
+  this.rows = [...this.rows];
 }
 }
