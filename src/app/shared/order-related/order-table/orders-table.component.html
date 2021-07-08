@@ -1,5 +1,5 @@
     <div class=" user-add ml-2 float-left">
-            <button class="btn " *ngIf="!isVisible" (click)="isVisible = true;isEdit= false;"> 
+            <button class="btn " *ngIf="!isVisible" (click)="isVisible = true;"> 
                 <mat-icon class="add-button ml-1" >add_circle</mat-icon>
                 سفارش جدید</button>
 
@@ -12,49 +12,62 @@
         <input matInput (keyup)="updateFilter($event)" #input />
 
     </mat-form-field>
-    <app-form-orders [isEdit]="isEdit" [visibleBtn]="isVisible" (OnclickCancel)="closeMe($event)" (OnclickInsert)="InsertOrders($event)" [myOrdersData]="myOrdersData" [rows]="rows" *ngIf="isVisible"></app-form-orders>
+    <app-form-orders  [visibleBtn]="isVisible" (OnclickCancel)="closeMe($event)" (OnclickInsert)="InsertOrders($event)" [myOrdersData]="myOrdersData" [rows]="rows" *ngIf="isVisible"></app-form-orders>
       
  
     <div class="mt-5" *ngIf="!doRefresh">
 
         <ngx-datatable mat-table #myTable class="bootstrap  expandable" [scrollbarH]="scrollBarHorizontal" [messages]="messages" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [rows]="rows">
+            <ngx-datatable-row-detail [rowHeight]="'auto'" #myDetailRow (toggle)="onDetailToggle($event)">
+                <ng-template let-row="row" let-value="subject" let-expanded="expanded" ngx-datatable-row-detail-template>
+                <div class="mt-3 mb-2">
+                    <input id="title" type="text" class="form-control f-15 mb-2 d-inline-block width-300 ml-5 mr-5 font" name="title" #title="ngModel" [(ngModel)]="row.title" placeholder="عنوان"  >
+                    <input id="subject" type="text" class="form-control f-15 mb-2 d-inline-block width-300 ml-5 font" name="subject" #subject="ngModel" [(ngModel)]="row.subject" placeholder="موضوع"  >
+                    <input id="trackingCode" type="text" class="form-control f-15 mb-2 d-inline-block width-300 font" name="trackingCode" #trackingCode="ngModel" [(ngModel)]="row.trackingCode" placeholder="کد رهگیری"  >
+                    <button class="float-left ml-4 b-green c-white width-60" (click)="editRow()"> 
+                        <mat-icon class="add-button ml-1 " >edit</mat-icon>
+                         </button>
+                </div>
+                </ng-template>
+                
+              </ngx-datatable-row-detail>
             <ngx-datatable-column prop="" name="#" [width]="100" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-rowIndex="rowIndex"  ngx-datatable-cell-template>
-                    <!-- <h6 [innerHTML]="rowIndex" class="c-black f-16 "></h6> -->
                     <button class="" mat-icon-button >
-                        <mat-icon class=" text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>list</mat-icon>
+                        <mat-icon class=" text-muted mb-3" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>list</mat-icon>
                       </button>
                 </ng-template>
             </ngx-datatable-column>
            
             <ngx-datatable-column prop="title" name="عنوان" [width]="300" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-value="title" ngx-datatable-cell-template>
-                    <h6 [innerHTML]="row.title" class="c-black f-15 mb-0"></h6>
+                    <h6 [innerHTML]="row.title" class="c-black f-15 mb-0 font"></h6>
 
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column prop="subject" name="موضوع" [width]="200" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-value="subject" ngx-datatable-cell-template>
                 
-                    <h6 [innerHTML]="row.subject" class="c-black f-15 mb-0"></h6>
+                    <h6 [innerHTML]="row.subject" class="c-black f-15 mb-0 font"></h6>
 
                 </ng-template>
 
             </ngx-datatable-column>
             <ngx-datatable-column prop="trackingCode" name="کد پیگیری" [width]="300" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true">
                 <ng-template let-row="row" let-value="trackingCode" ngx-datatable-cell-template>
-                    <h6 [innerHTML]="row.trackingCode" class="c-black f-15 mb-0"></h6>
+                    <h6 [innerHTML]="row.trackingCode" class="c-black f-15 mb-0 font"></h6>
 
                 </ng-template>
             </ngx-datatable-column>
           
             <ngx-datatable-column name="" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true" class="text-left">
                 <ng-template let-row="row" let-rowIndex="rowIndex" let-value="action" ngx-datatable-cell-template>
-                    <button class="" mat-icon-button >
-                    <mat-icon (click)="isEdit = true;isVisible = true;" class="text-muted"  matTooltip="ویرایش" matTooltipPosition="above" matRipple matPrefix>edit_outline</mat-icon>
+                    <button class="width-60" mat-icon-button >
+                        <mat-icon class="text-muted mb-3" (click)="toggleExpandRow(row)"  matTooltip="ویرایش" matTooltipPosition="above" matRipple matPrefix>edit_outline</mat-icon>
+                   
                   </button>
-                    <button class="" mat-icon-button >
-                    <mat-icon (click)="onRemoveRow(rowIndex)" class=" text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>delete_outline</mat-icon>
+                    <button class="width-60" mat-icon-button >
+                    <mat-icon (click)="onRemoveRow(rowIndex)" class="mb-3 text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>delete_outline</mat-icon>
                   </button>
                  
 

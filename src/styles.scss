@@ -21,6 +21,12 @@ button{
     border-radius: 3px !important;
     padding: 5px !important;
 }
+button:focus, 
+button:active:focus, 
+button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+}
 ul{
     list-style: none !important;
 }
@@ -48,6 +54,10 @@ background-color: #167a12;
 .b-red{
     background-color: #e01425;
     }
+    .font{
+        font-family: myFont !important;
+
+    }
 .mb-0{
 margin-bottom: 0 !important;
 }
@@ -63,4 +73,11 @@ margin-top: 0 !important;
 
 .dir-rtl{
     direction: rtl !important;
+}
+
+.width-300{
+    width: 300px !important;
+}
+.width-60{
+    width: 60px !important;
 }

@@ -1,4 +1,5 @@
 :host ::ng-deep {
+
         .user-add {
             button {
                 font-family: 'myFont';
@@ -71,6 +72,12 @@
                     border: 0;
                 }
             }
+        }
+
+        ::ng-deep .ngx-datatable .datatable-body-cell, .ngx-datatable .datatable-header-cell{
+            overflow: initial !important;
+            margin-top: 10px;
+          
         }
         ::ng-deep .ngx-datatable .datatable-footer .datatable-pager .pager li:nth-child(3) a::after {
             content: "/";

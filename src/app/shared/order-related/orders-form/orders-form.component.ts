@@ -23,7 +23,6 @@ export class OrdersFormComponent implements OnInit {
   @Input('visibleBtn') public isVisible :boolean = false;
    @Input() myOrdersData: any = [];
    @Input() rows: any = [];
-   @Input() public isEdit :boolean = false;
 
    isLoadingMyInfo = true;
 

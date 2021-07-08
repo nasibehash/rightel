@@ -17,7 +17,6 @@ export class OrdersTableComponent implements OnInit {
   isLoadingMyInfo :boolean = true;
   doRefresh :boolean = false;
   public isVisible:boolean = false;
-  @Input() public isEdit :boolean = false;
 
   scrollBarHorizontal = (window.innerWidth < 1200);
   messages = {
@@ -85,13 +84,29 @@ updateFilter(event) {
   }
 
 
+  toggleExpandRow(row) {
 
+    this.table.rowDetail.toggleExpandRow(row);
+
+
+  } 
+  editRow(){
+    swal.fire(
+      {
+          title: 'ویرایش با موفقیت انجام شد',
+          showConfirmButton: false,
+          icon: 'success',
+          timer: 4000
+      }
+      )
+  }
  InsertOrders(data){
 
 
   this.isVisible = false;
   const id =this.myOrdersData.length;
-  const trackingCode =Math.floor((Math.random() *1000) + 1)
+  const trackingCode =Math.floor((Math.random() *1000) + 1);
+
   this.myOrdersData.push({
     id:id + 1,
     title: data.title,
@@ -108,7 +123,7 @@ updateFilter(event) {
 
     swal.fire(
       {
-          title: 'نظرات شما با موفقیت در سیستم ثبت شد',
+          title: 'سفارش شما با موفقیت در سیستم ثبت شد',
           showConfirmButton: false,
           icon: 'success',
           timer: 4000
