@@ -34,11 +34,10 @@ export class OrdersFormComponent implements OnInit {
     isLoadingMyInfo = true;
     loadingData =true;
 
-      errorMessage="موارد را اشتباه وارد کردید ";
 
       submitForm = this.fb.group({
         title: ['', Validators.required],
-        comment: ['', Validators.required],
+        trackingCode: ['', Validators.required],
         subject:['', Validators.required]
 
       });
