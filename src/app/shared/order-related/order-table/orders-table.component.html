@@ -1,5 +1,5 @@
     <div class=" user-add ml-2 float-left">
-            <button class="btn " *ngIf="!isVisible" (click)="isVisible = true"> 
+            <button class="btn " *ngIf="!isVisible" (click)="isVisible = true;isEdit= false;"> 
                 <mat-icon class="add-button ml-1" >add_circle</mat-icon>
                 سفارش جدید</button>
 
@@ -12,7 +12,7 @@
         <input matInput (keyup)="updateFilter($event)" #input />
 
     </mat-form-field>
-    <app-form-orders [visibleBtn]="isVisible" (OnclickCancel)="closeMe($event)" (OnclickInsert)="InsertOrders($event)" [myOrdersData]="myOrdersData" [rows]="rows" *ngIf="isVisible"></app-form-orders>
+    <app-form-orders [isEdit]="isEdit" [visibleBtn]="isVisible" (OnclickCancel)="closeMe($event)" (OnclickInsert)="InsertOrders($event)" [myOrdersData]="myOrdersData" [rows]="rows" *ngIf="isVisible"></app-form-orders>
       
  
     <div class="mt-5" *ngIf="!doRefresh">
@@ -51,7 +51,7 @@
             <ngx-datatable-column name="" [resizeable]="false" [draggable]="false" [sortable]="false" [canAutoResize]="true" class="text-left">
                 <ng-template let-row="row" let-rowIndex="rowIndex" let-value="action" ngx-datatable-cell-template>
                     <button class="" mat-icon-button >
-                    <mat-icon class="text-muted"  matTooltip="ویرایش" matTooltipPosition="above" matRipple matPrefix>edit_outline</mat-icon>
+                    <mat-icon (click)="isEdit = true;isVisible = true;" class="text-muted"  matTooltip="ویرایش" matTooltipPosition="above" matRipple matPrefix>edit_outline</mat-icon>
                   </button>
                     <button class="" mat-icon-button >
                     <mat-icon (click)="onRemoveRow(rowIndex)" class=" text-muted" matTooltip="حذف" matTooltipPosition="above" matRipple matPrefix>delete_outline</mat-icon>

@@ -17,6 +17,7 @@ export class OrdersTableComponent implements OnInit {
   isLoadingMyInfo :boolean = true;
   doRefresh :boolean = false;
   public isVisible:boolean = false;
+  @Input() public isEdit :boolean = false;
 
   scrollBarHorizontal = (window.innerWidth < 1200);
   messages = {
@@ -75,12 +76,6 @@ updateFilter(event) {
   this.table.offset = 0;
 }
 
-
-toggleForm(){
-this.isVisible = !this.isVisible;
-// this.showForm = !this.showForm;
-
-}
 
 
   closeMe($event){

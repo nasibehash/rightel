@@ -2,7 +2,8 @@
 
     <div class="card">
         <div class="header-title float-right mb-3">
-            <h5 class="text-muted submit-btn" ><i class="fa fa-chevron-left faa-flash animated align-middle c-brown "></i><i class="fa fa-chevron-left faa-flash animated align-middle c-brown ml-1"></i><span class="f-18">ثبت  سفارش جدید</span></h5>
+            <h5 class="text-muted submit-btn" ><i class="fa fa-angle-double-left animated align-middle f-18 ml-1"></i><span *ngIf="isEdit" class="f-18">ویرایش</span><span *ngIf="!isEdit" class="f-18">ثبت  سفارش جدید</span></h5>
+        
         </div>
         <div class="card-content">
 
