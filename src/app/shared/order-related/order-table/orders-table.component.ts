@@ -96,7 +96,7 @@ updateFilter(event) {
           title: 'ویرایش با موفقیت انجام شد',
           showConfirmButton: false,
           icon: 'success',
-          timer: 4000
+          timer: 2000
       }
       )
   }
@@ -105,14 +105,13 @@ updateFilter(event) {
 
   this.isVisible = false;
   const id =this.myOrdersData.length;
-  const trackingCode =Math.floor((Math.random() *1000) + 1);
 
   this.myOrdersData.push({
     id:id + 1,
     title: data.title,
     comment: data.comment,
     subject: data.subject,
-    trackingCode:trackingCode
+    trackingCode:data.trackingCode
   });
 
     this.doRefresh = true;
@@ -126,7 +125,7 @@ updateFilter(event) {
           title: 'سفارش شما با موفقیت در سیستم ثبت شد',
           showConfirmButton: false,
           icon: 'success',
-          timer: 4000
+          timer: 2000
       }
   )
 }

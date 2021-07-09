@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UiModule } from './ui/ui.module';
 import {SharedModule} from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     UiModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
 
   ],
   providers: [],

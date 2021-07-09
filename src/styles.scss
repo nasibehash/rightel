@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/theming';
 
 @font-face {
     font-family: 'myFont';
@@ -19,7 +18,7 @@ a{
 button{
     border: none !important ;
     border-radius: 3px !important;
-    padding: 5px !important;
+    padding: 10px !important;
 }
 button:focus, 
 button:active:focus, 
@@ -54,6 +53,9 @@ background-color: #167a12;
 .b-red{
     background-color: #e01425;
     }
+.b-none{
+    background: none !important;
+}
     .font{
         font-family: myFont !important;
 
@@ -81,3 +83,5 @@ margin-top: 0 !important;
 .width-60{
     width: 60px !important;
 }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

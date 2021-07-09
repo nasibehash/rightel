@@ -1,20 +1,29 @@
-<div class="col-lg-12 col-sm-12 col-md-12 p-r-0 insert-info mb-3  animate__animated animate__fadeInDown">
+
+<div class=" user-add ml-2 float-left"  >
+    <button class=" b-green c-white"  (click)="openXl(longContent)"> 
+       
+        <i class="fa fa-plus animated align-middle f-18 ml-1 c-white"></i>
+        سفارش جدید</button>
+</div>
+<ng-template #longContent let-modal>
+
+<div class="col-lg-12 col-sm-12 col-md-12 p-r-0 insert-info mb-3  dir-rtl">
 
     <div class="card">
-        <div class="header-title float-right mb-3">
-            <h5 class="text-muted submit-btn" ><i class="fa fa-angle-double-left animated align-middle f-18 ml-1"></i><span  class="f-18">ثبت  سفارش جدید</span></h5>
+        <div class="header-title text-right mb-3">
+            <h5 class="text-muted submit-btn" ><i class="fa fa-angle-double-left  align-middle f-18 ml-1"></i><span  class="f-18">ثبت  سفارش جدید</span></h5>
         
         </div>
         <div class="card-content">
 
-            <form class="mt-1" id="info-form" [formGroup]="submitForm" #insertOrders="ngForm" (ngSubmit)="onClickSubmit(insertOrders.value)">
+            <form class="mt-1" id="info-form" [formGroup]="submitForm" #insertOrders="ngForm" >
                 <input id="title" type="text" class="form-control f-15 mb-2" placeholder="عنوان" formControlName="title"
-                  name="title"  [(ngModel)]="myOrdersData.title" required>
+                  name="title"   required>
                 <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('title').valid && (submitForm.get('title').dirty || submitForm.get('title').touched)"> عنوان را وارد کنید</small>
                 <input id="trackingCode" type="text" class="form-control f-15 mb-2" placeholder="کد رهگیری" formControlName="trackingCode" required>
                 <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('trackingCode').valid && (submitForm.get('trackingCode').dirty || submitForm.get('trackingCode').touched)">  کد رهگیری را وارد کنید</small>
-
-                <select (change)="selectChangeHandler($event)" formControlName="subject" class="float-right f-15">
+<br>
+                <select (change)="selectChangeHandler($event)" formControlName="subject" class="float-right  f-15">
                     <option value="" >موضوع</option>
                     <option value="موضوع یک" >موضوع یک</option>
                     <option value="موضوع دو">موضوع دو</option>
@@ -24,14 +33,17 @@
 
 
 
-                <button  type="submit" [disabled]="!submitForm.valid" class="text-light c-white b-green">
-                  ثبت
-                  </button>
-                <button (click)="cancelBtn();"   class="text-light  mr-4 c-white b-red" >
-                 انصراف
-                  </button>
+              <div class="mt-5">
+                <button  type="submit" (click)="onClickSubmit(insertOrders.value)" [disabled]="!submitForm.valid" class="text-light c-white b-green">
+                    ثبت
+                    </button>
+                  <button (click)="close();"   class="text-light  mr-4 c-white b-red" >
+                   انصراف
+                    </button>
+              </div>
             </form>
 
         </div>
     </div>
 </div>
+</ng-template>
