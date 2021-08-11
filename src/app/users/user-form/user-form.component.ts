@@ -43,7 +43,6 @@ isVisible:boolean;
  
     }
 
-
   ngOnInit() {
 console.log(this.myUserData);
 this.countDown = timer(0, this.tick).subscribe(() => --this.counter);
