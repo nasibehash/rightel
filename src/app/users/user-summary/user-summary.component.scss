@@ -1,0 +1,21 @@
+
+.header-title {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    padding-bottom: 0;
+    border-bottom: none;
+    // background-color: white;
+    h6 {
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .submit-btn{
+        display: inline !important;
+    }
+}
+.form-check-label {
+    padding-right: 1.25rem !important;
+    
+}
+

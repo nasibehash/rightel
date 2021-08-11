@@ -1,0 +1,52 @@
+
+
+
+
+<div class="col-lg-12 col-sm-12 col-md-12 p-r-0 insert-info mb-3  dir-rtl">
+<div class="timer">
+  {{counter | formatTime}}
+</div>
+    <div class="card">
+        <div class="header-title text-right mb-3">
+            <h5 class="text-muted submit-btn" ><i class="fa fa-angle-double-left  align-middle f-18 ml-1"></i><span  class="f-18">ثبت  کاربر جدید</span></h5>
+        
+        </div>
+        <div class="card-content">
+
+            <form class="mt-1" id="info-form" [formGroup]="submitForm"  #f="ngForm" (ngSubmit)="f.valid  ?onClickSubmit(f):null">
+                <input id="firstName" type="text" class="form-control f-15 mb-2" placeholder="نام" formControlName="firstName"
+                  name="firstName"   required>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('firstName').valid && (submitForm.get('firstName').dirty || submitForm.get('firstName').touched)"> نام را وارد کنید</small>
+                <input id="lastName" type="text" class="form-control f-15 mb-2" placeholder="نام خانوادگی " formControlName="lastName" required>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('lastName').valid && (submitForm.get('lastName').dirty || submitForm.get('lastName').touched)">   نام خانوادگی را وارد کنید</small>
+                <input id="phoneNo" type="text" class="form-control f-15 mb-2" placeholder="شماره موبایل" formControlName="phoneNo" required>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('phoneNo').valid && (submitForm.get('phoneNo').dirty || submitForm.get('phoneNo').touched)">  شماره موبایل  را وارد کنید</small>
+                <input id="email" type="text" class="form-control f-15 mb-2" placeholder="ایمیل " formControlName="email" required>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('email').valid && (submitForm.get('email').dirty || submitForm.get('email').touched)">  ایمیل  را وارد کنید</small>
+                <input id="fromSalary" type="text" class="form-control f-15 mb-2" placeholder="رنج حقوق از" formControlName="fromSalary" required>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('fromSalary').valid && (submitForm.get('fromSalary').dirty || submitForm.get('fromSalary').touched)">   مبلغ  را وارد کنید</small>
+                <input id="toSalary" type="text" class="form-control f-15 mb-2" placeholder="رنج حقوق تا" formControlName="toSalary" required>
+                <small class="form-text text-danger float-right  mb-2" *ngIf="!submitForm.get('toSalary').valid && (submitForm.get('toSalary').dirty || submitForm.get('toSalary').touched)">   مبلغ را وارد کنید</small>
+
+            <div>
+              <label for="">تصویر خود را وارد کنید</label>
+              <image-uploader [image]="'assets/img/icon/attachment.png'" [limitSize]="200" [width]="50" [height]="50" (errorMessages)=errorMg($event)></image-uploader>
+              <div class="col-12 text-center" *ngIf="errorMessages !== ''">
+                <p class="c-danger bold">
+                    <i class="fa fa-exclamation-circle fa-lg m-l-5 faa-flash animated"></i>
+                    <span>{{errorMessages}}</span>
+                </p>
+            </div>
+            </div>
+
+              <div class="mt-5">
+                <button  type="submit" [disabled]="!submitForm.valid" class="text-light c-white b-green">
+                    ثبت
+                    </button>
+            
+              </div>
+            </form>
+
+        </div>
+    </div>
+</div>

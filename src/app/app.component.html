@@ -1,10 +1,7 @@
 
 <div class="site-container p-5"  [attr.dir]="rtl ? 'rtl' : null">
 
-<app-header></app-header>
-<addition-navbar></addition-navbar>
-
-
-
+ <app-user-form (OnclickInsert)="getFormData($event)" *ngIf="isVisible"></app-user-form>
+ <app-user-summary [myUserData]="myUserData" (OnclickInsert)="getSummaryData($event)" *ngIf="!isVisible"></app-user-summary>
 <router-outlet></router-outlet>
 </div>

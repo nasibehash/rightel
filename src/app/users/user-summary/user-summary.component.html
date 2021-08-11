@@ -1,0 +1,77 @@
+
+
+
+
+<div class="col-lg-12 col-sm-12 col-md-12 p-r-0 insert-info mb-3  dir-rtl">
+
+    <div class="card">
+        <div class="header-title text-right mb-3">
+            <h5 class="text-muted submit-btn" ><i class="fa fa-angle-double-left  align-middle f-18 ml-1"></i><span  class="f-18"> خلاصه اطلاعات کاربر</span></h5>
+        
+        </div>
+        <div class="card-content">
+<div class="row">
+    <div class="row">
+        <div class="col-lg-4">
+            <h6>نام : {{myUserData.firstName}}</h6>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+        <div class="col-lg-4">
+            <h6>نام خانوادگی : {{myUserData.lastName}}</h6>
+    
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <h6>شماره موبایل : {{myUserData.phoneNo}}</h6>
+    
+        </div>
+        <div class="col-lg-4">
+            
+        </div>
+        <div class="col-lg-4">
+            <h6>ایمیل : {{myUserData.email}}</h6>
+    
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <h6>مبلغ حقوق از : {{myUserData.fromSalary}}</h6>
+    
+        </div>
+        <div class="col-lg-4">
+            
+        </div>
+        <div class="col-lg-4">
+            <h6>مبلغ حقوق تا : {{myUserData.toSalary}}</h6>
+    
+        </div>
+    </div>
+</div>
+<div class="row">
+
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="jobType"  id="fullTime">
+  <label class="form-check-label" for="fullTime">
+    تمام وقت
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="jobType" [(ngModel)]="myUserData.jobType" id="partTime" checked>
+  <label class="form-check-label" for="partTime">
+  پاره وقت
+  </label>
+</div>
+
+</div>
+
+<button  type="submit" (click)="returnBtn()" class="text-light c-white b-green">
+    بازگشت
+    </button>
+        </div>
+
+
+    </div>
+</div>

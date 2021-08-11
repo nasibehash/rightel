@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {StatusPipe} from './pipe/status.pipe';
-import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
+import {ImageUploaderComponent} from './image-uploader/image-uploader.component';
+import {FormatTimePipe} from './pipes/formatTime.pipe';
+
+
 @NgModule({
   declarations: [
-      StatusPipe,
-    BreadcrumbComponent
+      ImageUploaderComponent,
+      FormatTimePipe
     ],
   imports: [
     CommonModule,
  
   ],
   exports:[
-    StatusPipe,
-    BreadcrumbComponent
+    ImageUploaderComponent,
+    FormatTimePipe
   ]
 })
 export class SharedModule { }

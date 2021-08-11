@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OrdersComponent } from './orders.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserSummaryComponent } from './user-summary/user-summary.component';
 
 const routes: Routes = [
   {
@@ -9,18 +10,23 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'orders',
+        redirectTo: 'userForm',
         pathMatch: 'full',
       },
       {
         path: '',
-        component: OrdersComponent,
+        component: UserFormComponent,
        
-      }
-      ,
+      },
+      {
+        path: 'userSummary',
+        component: UserSummaryComponent,
+       
+      },
+      
       {
         path: '**',
-        redirectTo: 'orders',
+        redirectTo: 'users',
         pathMatch: 'full'
       }
     ],
@@ -32,5 +38,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OrdersRoutingModule { }
+export class UsersRoutingModule { }
 

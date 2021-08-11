@@ -1,0 +1,6 @@
+<div class="col-auto">
+    <img [src]="image" (click)="selectImage.click()" class=" pt-2  bd-radius-5 bd-verygraylight-dotted-1 {{isLoading?'':'cursor-pointer'}}" [width]="width" [height]="height" />
+
+</div>
+
+<input type="file" id="fileName" (change)="updateImage($event.target.files)" style="display: none" #selectImage />
