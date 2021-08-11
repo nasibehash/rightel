@@ -7,9 +7,12 @@ import { Pipe, PipeTransform } from "@angular/core";
     transform(value: number): string {
       const minutes: number = Math.floor(value / 60);
       return (
-        ("00" + minutes).slice(-2) +
+    ("00" + minutes).slice(-2) +
         ":" +
         ("00" + Math.floor(value - minutes * 60)).slice(-2)
+        
       );
+// localStorage.setItem("toList", stringToStore);
+    
     }
   }

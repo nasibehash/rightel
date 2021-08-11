@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
+import {  NgForm } from '@angular/forms';
 import { UsersModel } from 'src/core/models/users.model';
 import { timer, Subscription } from "rxjs";
-import { Pipe, PipeTransform } from "@angular/core";
+import { createNumberMask } from 'text-mask-addons/dist/textMaskAddons';
 
 
 @Component({
@@ -14,47 +13,43 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 })
 export class UserFormComponent implements OnInit, OnDestroy {
-  Form: FormGroup;
   countDown: Subscription;
   counter = 1800;
   tick = 1000;
 
- 
+
 @Output() OnclickInsert = new EventEmitter<any>();
+@ViewChild('f') userForm: NgForm;
 errorMessages : string = '';
-  
-   myUserData: Array<UsersModel> = [];
+
+@Input() myUserData:UsersModel= new  UsersModel;
+
 isVisible:boolean;
+@Input() myAction = 'NEW';
 
-  submitForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    phoneNo: ['', Validators.required],
-    fromSalary: ['', Validators.required],
-    toSalary: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
+public mask = [ /[0-9]/, /\d/, /\d/,/\d/,  '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
+public letterPattern = [/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/];
+public maskAmount = createNumberMask({
+  prefix: '',
+  suffix: ''
+});
 
 
-  });
-  constructor(
-    private router: Router,
-  private fb: FormBuilder
-    ) {
- 
-    }
+
+constructor() {}
 
   ngOnInit() {
-console.log(this.myUserData);
+
 this.countDown = timer(0, this.tick).subscribe(() => --this.counter);
+const ttt= this.myUserData;
 
   }
   ngOnDestroy(){
     this.countDown=null;
   }
-  onClickSubmit(f:NgForm) {
-this.myUserData.push(f.value)
-    this.OnclickInsert.emit({isVisible:false,data:f.value});
-            
+  onSubmit() {
+    this.OnclickInsert.emit({isVisible:false,data:this.myUserData});
+
  }
  errorMg(message : string){
   this.errorMessages =message;
@@ -65,4 +60,6 @@ this.myUserData.push(f.value)
 
 
 }
+
+
 

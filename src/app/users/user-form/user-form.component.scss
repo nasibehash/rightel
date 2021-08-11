@@ -21,7 +21,9 @@
         }
     }
 }
-
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
 .header-title {
     padding: 1rem;
     margin-bottom: 1rem;

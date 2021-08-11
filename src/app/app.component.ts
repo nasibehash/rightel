@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersModel } from 'src/core/models/users.model';
+
 const BREADCRUMBS: any[] = [
   {
     title: 'داشبورد',
@@ -18,10 +19,13 @@ export class AppComponent {
   rtl: boolean;
 
   isVisible:boolean=true;
-  myUserData:UsersModel;
+  action='NEW';
 
-  constructor(){
+  myUserData:UsersModel= new  UsersModel;
+
+    constructor(){
     this.rtl = true;
+
 
   }
 
@@ -32,6 +36,7 @@ this.isVisible=$event.isVisible;
   getSummaryData($event){
     this.myUserData=$event.data;
     this.isVisible=$event.isVisible;
+    this.action = $event.action;
 
       }
 }

@@ -7,7 +7,7 @@
     <div class="card">
         <div class="header-title text-right mb-3">
             <h5 class="text-muted submit-btn" ><i class="fa fa-angle-double-left  align-middle f-18 ml-1"></i><span  class="f-18"> خلاصه اطلاعات کاربر</span></h5>
-        
+
         </div>
         <div class="card-content">
 <div class="row">
@@ -20,54 +20,47 @@
         </div>
         <div class="col-lg-4">
             <h6>نام خانوادگی : {{myUserData.lastName}}</h6>
-    
+
         </div>
     </div>
     <div class="row">
         <div class="col-lg-4">
             <h6>شماره موبایل : {{myUserData.phoneNo}}</h6>
-    
+
         </div>
         <div class="col-lg-4">
-            
+
         </div>
         <div class="col-lg-4">
             <h6>ایمیل : {{myUserData.email}}</h6>
-    
+
         </div>
     </div>
     <div class="row">
         <div class="col-lg-4">
             <h6>مبلغ حقوق از : {{myUserData.fromSalary}}</h6>
-    
+
         </div>
         <div class="col-lg-4">
-            
+
         </div>
         <div class="col-lg-4">
             <h6>مبلغ حقوق تا : {{myUserData.toSalary}}</h6>
-    
+
         </div>
     </div>
 </div>
 <div class="row">
 
-   <div class="form-check">
-  <input class="form-check-input" type="radio" name="jobType"  id="fullTime">
-  <label class="form-check-label" for="fullTime">
-    تمام وقت
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="jobType" [(ngModel)]="myUserData.jobType" id="partTime" checked>
-  <label class="form-check-label" for="partTime">
-  پاره وقت
-  </label>
+<div *ngFor="let job of jobs; let i = index">
+  <input  name="job" type="radio"
+    [value]="job" [(ngModel)]="myUserData.jobType" />
+  <label for="">{{job}}</label>
 </div>
 
 </div>
 
-<button  type="submit" (click)="returnBtn()" class="text-light c-white b-green">
+<button  type="submit" (click)="returnBtn(myUserData)" class="text-light c-white b-green">
     بازگشت
     </button>
         </div>

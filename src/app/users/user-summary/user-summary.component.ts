@@ -14,25 +14,22 @@ import { UsersModel } from 'src/core/models/users.model';
 })
 export class UserSummaryComponent implements OnInit {
   Form: FormGroup;
- 
+  jobs: string[] = ['تمام وقت', 'پاره وقت'];
+
  @Input()  myUserData: UsersModel;
  @Output() OnclickInsert = new EventEmitter<any>();
  isVisible:boolean=true;
 
 
- 
-  constructor(
-    private fb: FormBuilder
-    ) {
- 
-    }
+
+  constructor() { }
 
 
   ngOnInit() {
   }
 
-  returnBtn(){
-    this.OnclickInsert.emit({isVisible:false,data:this.myUserData});
+  returnBtn(data:UsersModel){
+    this.OnclickInsert.emit({isVisible:true,data:data});
 
 
   }
