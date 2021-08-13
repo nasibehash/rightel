@@ -8,9 +8,8 @@
   </div>
       <div class="card">
           <div class="header-title text-right mb-3">
-              <!-- <h5 class="text-muted submit-btn" ><i class="fa fa-angle-double-left  align-middle f-18 ml-1"></i><span  class="f-18">ثبت  کاربر جدید</span></h5> -->
 
-              <h5 class="text-muted submit-btn"><i class="fa fa-angle-double-left  align-middle f-18 ml-1"></i><span *ngIf="myAction === 'EDIT'"> ویرایش </span><span *ngIf="myAction === 'NEW'"> ایجاد </span>کاربر جدید</h5>
+              <h5 class="text-muted submit-btn"><i class="fa fa-angle-double-left  align-middle f-18 ml-1"></i><span *ngIf="myAction === 'EDIT'"> ویرایش </span><span *ngIf="myAction === 'NEW'"> ایجاد </span>کاربر </h5>
 
           </div>
           <div class="card-content">
@@ -34,16 +33,18 @@
 
                   <input id="fromSalary" type="text" class="form-control f-15 mb-2" min="0" [textMask]="{mask: maskAmount}" placeholder="رنج حقوق از"
                   name="fromSalary" #fromSalary="ngModel" [(ngModel)]="myUserData.fromSalary" required>
-                  <span class="form-text text-danger float-right  mb-2" *ngIf="!fromSalary.valid && fromSalary.touched">لطفا  رنج حقوق  را به درستی وارد کنید</span>
+                  <span class="form-text text-danger float-right  mb-2" *ngIf="!fromSalary.valid && fromSalary.touched ">لطفا  رنج حقوق  را به درستی وارد کنید</span>
 
                   <input id="toSalary" type="text" class="form-control f-15 mb-2" min="myUserData.fromSalary" [textMask]="{mask: maskAmount}" placeholder="رنج حقوق تا"
                   name="toSalary" #toSalary="ngModel" [(ngModel)]="myUserData.toSalary" required>
 
                   <span class="form-text text-danger float-right  mb-2" *ngIf="!toSalary.valid && toSalary.touched">لطفا شماره رنج حقوق  را به درستی وارد کنید</span>
+                  <span class="form-text text-danger float-right  mb-2" *ngIf=" myUserData.fromSalary > myUserData.toSalary">رنج مبلغ از , باید از رنج مبلغ از , بزرگتر باشد </span>
 
               <div>
                 <label for="">تصویر خود را وارد کنید</label>
-                <image-uploader [image]="'assets/img/icon/attachment.png'" [limitSize]="200" [width]="50" [height]="50" (errorMessages)=errorMg($event)></image-uploader>
+                <image-uploader [image]="'assets/img/icon/attachment.png'" [limitSize]="200" [width]="50" [height]="50"  (errorMessages)="errorMg($event)" ></image-uploader>
+
                 <div class="col-12 text-center" *ngIf="errorMessages !== ''">
                   <p class="c-danger bold">
                       <i class="fa fa-exclamation-circle fa-lg m-l-5 faa-flash animated"></i>
@@ -54,7 +55,7 @@
 
                 <div class="mt-5">
                   <button  type="submit"  [disabled]="!f.valid" class="text-light c-white b-green">
-                      ثبت
+                    <span *ngIf="myAction === 'EDIT'"> ویرایش </span><span *ngIf="myAction === 'NEW'"> ایجاد </span>
                       </button>
 
                 </div>

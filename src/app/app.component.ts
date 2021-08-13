@@ -36,7 +36,7 @@ this.isVisible=$event.isVisible;
   getSummaryData($event){
     this.myUserData=$event.data;
     this.isVisible=$event.isVisible;
-    this.action = $event.action;
+    this.action = $event.myAction;
 
       }
 }

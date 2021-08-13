@@ -15,6 +15,7 @@ import { UsersModel } from 'src/core/models/users.model';
 export class UserSummaryComponent implements OnInit {
   Form: FormGroup;
   jobs: string[] = ['تمام وقت', 'پاره وقت'];
+  @Input() myAction = 'EDIT';
 
  @Input()  myUserData: UsersModel;
  @Output() OnclickInsert = new EventEmitter<any>();
@@ -26,10 +27,10 @@ export class UserSummaryComponent implements OnInit {
 
 
   ngOnInit() {
-  }
+  };
 
   returnBtn(data:UsersModel){
-    this.OnclickInsert.emit({isVisible:true,data:data});
+    this.OnclickInsert.emit({myAction:'EDIT', isVisible:true,data:data});
 
 
   }

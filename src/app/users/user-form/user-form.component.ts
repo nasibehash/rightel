@@ -20,13 +20,12 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
 @Output() OnclickInsert = new EventEmitter<any>();
 @ViewChild('f') userForm: NgForm;
-errorMessages : string = '';
 
 @Input() myUserData:UsersModel= new  UsersModel;
-
-isVisible:boolean;
 @Input() myAction = 'NEW';
 
+isVisible:boolean;
+errorMessages : string = '';
 public mask = [ /[0-9]/, /\d/, /\d/,/\d/,  '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
 public letterPattern = [/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/,/[a-zA-Z]/, /[a-zA-Z]/, /[a-zA-Z]/];
 public maskAmount = createNumberMask({
